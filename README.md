@@ -1,2 +1,1 @@
-# text-editor
-Text Editor Progressive Web Application
+# Text Editor Starter Code
