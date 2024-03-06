@@ -11,7 +11,8 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      header: './src/js/header.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -23,8 +24,14 @@ module.exports = () => {
         title: 'Text Editor'
       }),
 
-      new InjectManifest(),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src=sw.js"
+      }),
+
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Text Editor',
         short_name: 'TEditor',
         description: 'Edit Text Offline!',
